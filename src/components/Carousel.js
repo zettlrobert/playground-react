@@ -3,13 +3,13 @@ import React, { useState, useEffect, Fragment } from 'react'
 // For Animations
 import { useTransition, animated } from 'react-spring';
 
-const Carousel = props => {
+const Carousel = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
       setRender((state) => (state + 1) % items.length);
 
-    }, 2000)
+    }, 4000)
 
     return () => clearInterval(interval);
 
@@ -52,31 +52,34 @@ const Carousel = props => {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { tension: 220, friction: 120 },
+    config: { tension: 220, friction: 150 },
   });
 
 
   return (
-    <Fragment>
-      {fadingTextPropsTransition.map(({ item, props, key }) => (
-        <animated.div
-          key={key}
-          style={{ ...props, position: 'absolute' }}
-        >
-          <div className={setRender.Carousel__Title}>
-            <div style={itemsStyle}>
-              <i style={materialStyle} className="material-icons">{item.icon}</i>
-              <h2>{item.title}</h2>
+    <div style={container}>
+
+
+      <Fragment>
+
+
+        {fadingTextPropsTransition.map(({ item, props, key }) => (
+          <animated.div
+            key={key}
+            style={{ ...props, position: 'absolute', left: '0', right: '0', marginLeft: 'auto', marginRight: 'auto', marginTop: '20vh' }}
+          >
+            <div className={setRender.Carousel__Title}>
+              <div style={itemsStyle}>
+                <i style={materialStyle} className="material-icons">{item.icon}</i>
+                <h2>{item.title}</h2>
+              </div>
             </div>
-          </div>
-        </animated.div>
-      ))}
+          </animated.div>
+        ))}
 
 
-      <div>
-      </div>
-
-    </Fragment>
+      </Fragment>
+    </div>
   )
 }
 
@@ -90,5 +93,12 @@ const itemsStyle = {
 const materialStyle = {
   fontSize: '6rem'
 }
+
+const container = {
+  display: 'block',
+  border: '2px solid red',
+  height: '50vh',
+}
+
 
 export default Carousel

@@ -9,6 +9,8 @@ const Home = props => {
       <h2>Hello from Home</h2>
 
       <Carousel />
+
+      <div className="test">test</div>
     </div>
   )
 }

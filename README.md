@@ -1,3 +1,9 @@
+# react-playground
+
+![cover](docs/cover.png)
+repository to try out react components and concepts
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
